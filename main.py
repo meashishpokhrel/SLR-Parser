@@ -12,13 +12,13 @@ master = Tk()
 
 master.title('SLR Parser')
 
-canvas = Canvas(master, width=master.winfo_screenwidth(), height=master.winfo_screenheight())
+canvas = Canvas(master, width=master.winfo_screenwidth(), height=master.winfo_screenheight(), bg='slategray1')
 
-u1_entry = Entry(canvas)
-canvas.create_window(220, 200, window=u1_entry, height=150, width=300)
+#u1_entry = Entry(canvas)
+#canvas.create_window(220, 200, window=u1_entry, height=150, width=300)
 
 u2_entry = Entry(canvas)
-canvas.create_window(220, 430, window=u2_entry, height=100, width=300)
+canvas.create_window(220, 320, window=u2_entry, height=100, width=300)
 
 grammars = open("grammar2.txt")
 G = {}
@@ -472,7 +472,7 @@ def view_parsing():
     show.title("Parsing Table")
     show.geometry("%dx%d%+d%+d" % (1300, 1300, 0, 0))
     display = Label(show, text="Generation of Parsing Table")
-    canvas = Canvas(show, width=2000, height=1000)
+    canvas = Canvas(show, width=2000, height=1000, bg='slategray1')
     canvas.grid(row=0, column=0)
 
     print(parse_table)
@@ -552,7 +552,7 @@ def view_stack():
     show = Toplevel(master)
     show.title("Stack Implementation")
     show.geometry("%dx%d%+d%+d" % (1300, 1300, 0, 0))
-    canvas = Canvas(show, width=2000, height=1000)
+    canvas = Canvas(show, width=2000, height=1000, bg='slategray1')
     canvas.grid(row=0, column=0)
     row = row - 1
     col = 4
@@ -609,22 +609,26 @@ def main():
 
     var = IntVar()
 
-    table = canvas.create_polygon(50, 100, 600, 100, 600, 310, 50, 310, fill='PaleVioletRed1')
-    canvas.create_text(150, 110, text="Enter the grammar", font="Times 15 bold")
+    #table = canvas.create_polygon(50, 100, 600, 100, 600, 310, 50, 310, fill='PaleVioletRed1')
+    
+    canvas.create_text(700, 50, text="SLR Parsing", font="Times 50 bold")
 
-    table1 = canvas.create_polygon(50, 350, 600, 350, 600, 500, 50, 500, fill='PaleVioletRed1')
-    canvas.create_text(150, 360, text="Enter input string", font="Times 15 bold")
+    #table = canvas.create_polygon(50, 100, 600, 100, 600, 310, 50, 310, fill='PaleVioletRed1')
+    #canvas.create_text(700, 50, text="SLR Parsing", font="Times 50 bold")
 
-    lr0 = Button(canvas, text="View LR(0) Items", font="Times 15 bold", command=view_lr)
+    table1 = canvas.create_polygon(50, 150, 600, 150, 600, 400, 50, 400, fill='green2')
+    canvas.create_text(180, 210, text="Enter input string", font="Times 25 bold")
+
+    lr0 = Button(canvas, text="View LR(0) Items", font="Times 15 bold", command=view_lr, bg='lawngreen')
     canvas.create_window(750, 270, window=lr0, height=50, width=170)
 
-    pt = Button(canvas, text="View Parsing Table", font="Times 15 bold", command=view_parsing)
+    pt = Button(canvas, text="View Parsing Table", font="Times 15 bold", command=view_parsing, bg='lawngreen')
     canvas.create_window(750, 350, window=pt, height=50, width=170)
 
-    vs = Button(canvas, text='View Stack', font="Times 15 bold", command=view_stack)
+    vs = Button(canvas, text='View Stack', font="Times 15 bold", command=view_stack, bg='lawngreen')
     canvas.create_window(950, 270, window=vs, height=50, width=170)
 
-    quit = Button(canvas, text='QUIT', font="Times 15 bold", command=master.quit)
+    quit = Button(canvas, text='QUIT', font="Times 15 bold", command=master.quit, bg='red')
     canvas.create_window(950, 350, window=quit, height=50, width=170)
     canvas.pack()
 
